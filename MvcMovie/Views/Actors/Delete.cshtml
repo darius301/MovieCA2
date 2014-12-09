@@ -1,0 +1,48 @@
+﻿@model MvcMovie.Models.Actor
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3>Edit</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MovieId)
+    <div class="container">
+        <div class="jumbotron" style="margin-top: 70px">
+            <div class="panel" style="background-color:white;color:black">
+                <div class="panel-heading" style=" background-color:lightsalmon">
+                    <div class="row" style="font-size:large">
+                        <div class="col-xs-6">
+                            @Html.DisplayNameFor(model => model.ActorsName)
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.DisplayNameFor(model => model.ActorGender)
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="row" style="margin:10px">
+                        <div class="col-xs-6">
+                            @Html.DisplayFor(model => model.ActorsName)
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.DisplayFor(model => model.ActorGender)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" style="margin:10px">
+                    <h3>Are you sure you want to delete this?</h3>
+
+                    <p>
+                        <input type="submit" value="Delete" class="btn btn-primary btn-danger" style="margin-left:30px" /> &nbsp;
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-xs" })
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,97 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div class="container">
+    <div class="jumbotron">
+
+        <div class="row" style="font-size:large;color:gold;margin-left:10px">
+            <div class=" col-xs-3">
+                <b>Title:</b>
+            </div>
+            <div class=" col-xs-3">
+                <b>Genre:</b>
+            </div>
+            <div class=" col-xs-3">
+                <b>Released:</b>
+            </div>
+            <div class=" col-xs-3">
+                <b>Actions</b>
+            </div>
+        </div>&nbsp;&nbsp;
+
+        <div class="row" style="margin-left:10px">
+            <div class=" col-xs-3">
+                @Html.DisplayFor(model => model.MoviesTitle)
+            </div>
+            <div class=" col-xs-3">
+                @Html.DisplayFor(model => model.MovieGenre)
+            </div>
+            <div class=" col-xs-3">
+                @Html.DisplayFor(model => model.MovieDate)
+            </div>
+            <div class=" col-xs-3">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }, new { @class = "btn btn-xs btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = Model.MovieId }, new { @class = "btn btn-danger btn-xs" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <div class="table" style="margin-left:100px; font-size:large">
+                    
+                </div>
+                @Html.ActionLink("Add Actor", "Create", "Actors", new { movID = Model.MovieId }, new { @class = "btn btn-primary" })&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+            <div>
+                @if (Model.Actors != null)
+                {
+                    <table class="table">
+                        <tr>
+                            <td>
+                                @foreach (var mov in Model.Actors)
+                                {
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                &nbsp;&nbsp; 
+                                                <a class="text-info">@Html.DisplayFor(modelItem => mov.ActorsName)</a> is  an  actor and her/he played in movie 
+                                                @Html.DisplayFor(model => model.MoviesTitle).&nbsp;&nbsp;
+
+                                                @Html.ActionLink("Edit", "Edit", "Actors", new { id = mov.ActorId }, new { @class = "btn btn-xs btn-info" })&nbsp;
+                                                @Html.ActionLink("Delete", "Delete", "Actors", new { id = mov.ActorId }, new { @class = "btn btn-xs btn-danger" })
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </td>
+                        </tr>
+
+                    </table>
+
+                }
+                else
+                {
+                    <p class="alert alert-info">No actors found!!</p>
+
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Table -->
+    <table class="table"></table>
+</div>
+
+
+

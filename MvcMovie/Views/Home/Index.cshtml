@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+<div class="container">
+    <div class="jumbotron" style="margin-top: 90px;">
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div class="panel">
+            <div class=" panel-heading" style="background-color:lightgreen">
+                <div class="row" style="font-size:large; color:black">
+                    <div class=" col-xs-3">
+                        @Html.DisplayNameFor(model => model.MoviesTitle)
+                    </div>
+                    <div class="col-xs-3">
+                        @Html.DisplayNameFor(model => model.MovieGenre)
+                    </div>
+                    <div class="col-xs-3">
+                        @Html.DisplayNameFor(model => model.MovieDate)
+                    </div>
+                    <div class="col-xs-3">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-content">
+                @foreach (var item in Model)
+                {
+                    <div class="row" style="margin:10px">
+                        <div class="col-xs-3">
+                            <a href="@Url.Action("Details", null, new{id = item.MovieId})">@Html.DisplayFor(modelItem => item.MoviesTitle)</a>
+                        </div>  
+                        <div class="col-xs-3">
+                            @Html.DisplayFor(modelItem => item.MovieGenre)
+                        </div>
+                        <div class="col-xs-3">
+                            @Html.DisplayFor(modelItem => item.MovieDate)
+                        </div>
+                        <div class="col-xs-3">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }, new { @class = "btn btn-xs btn-info" }) &nbsp;
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MovieId }, new { @class = "btn btn-danger btn-xs" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

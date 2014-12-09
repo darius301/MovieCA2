@@ -1,0 +1,65 @@
+﻿@model MvcMovie.Models.Movie
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container">
+        <div class="jumbotron" style="margin-top:70px;">
+            <h3>Add Movie</h3>
+            <div class="panel">
+                <div class="panel" style=" background-color:lightgreen;color:black">
+                    <div class="row" style="font-size:large;margin-left:10px" >
+                        <div class=" col-xs-4">
+                            @Html.LabelFor(model => model.MoviesTitle)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.LabelFor(model => model.MovieGenre)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.LabelFor(model => model.MovieDate)
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+
+                    <div class="row" style="margin:10px">
+                        <div class="col-xs-4">
+                            @Html.EditorFor(model => model.MoviesTitle)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.EditorFor(model => model.MovieGenre)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.EditorFor(model => model.MovieDate)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            @Html.ValidationMessageFor(model => model.MoviesTitle)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.ValidationMessageFor(model => model.MovieGenre)
+                        </div>
+                        <div class="col-xs-4">
+                            @Html.ValidationMessageFor(model => model.MovieDate)
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" style="margin:10px">
+                    <p>
+                        <input type="submit" value="Create" class="btn btn-success" style="margin-left:30px"/> &nbsp;
+                        @Html.ActionLink("Back to List", "Index", new { id = Model.MovieId }, new { @class = "btn btn-xs" })
+                        @section Scripts {
+                            @Scripts.Render("~/bundles/jqueryval")
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

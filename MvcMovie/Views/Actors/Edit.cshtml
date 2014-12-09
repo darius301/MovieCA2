@@ -1,0 +1,60 @@
+﻿@model MvcMovie.Models.Actor
+
+@{
+    ViewBag.Title = "Edit";
+}
+<h3>Edit</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MovieId)
+    <div class="container">
+        <div class="jumbotron" style="margin-top: 70px">
+            <div class="panel" style="background-color:white">
+                <div class="panel-heading" style=" background-color:lightblue;color:black">
+                    <div class="row" style="font-size:large">
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.ActorsName)
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.LabelFor(model => model.ActorGender)
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="row" style="margin:10px">                      
+                        <div class="col-xs-6">
+                            @Html.EditorFor(model => model.ActorsName)
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.EditorFor(model => model.ActorGender)
+                        </div>                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            @Html.ValidationMessageFor(model => model.ActorsName)
+                        </div>
+                        <div class="col-xs-6">
+                            @Html.ValidationMessageFor(model => model.ActorGender)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" style="margin:10px">
+                    <h3>Are you sure you want to edit this?</h3>
+
+                    <p>
+                        <input type="submit" value="Save" class="btn btn-primary" style="margin-left:30px" /> &nbsp;
+                        @Html.ActionLink("Back to List", "Details", "Home", new { id = Model.MovieId }, new { @class = "btn btn-xs" })
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
